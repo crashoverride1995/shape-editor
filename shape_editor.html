@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"> 
+		<meta name="author" content="Hitesh Thawani">
+		<title>Shape Editor 01856453</title>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.3/fabric.js" integrity="sha256-aSsIe9BokS5Bo18owzdTHNNW1EMZsDDe+WzMkZBvGmY=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha256-DupmmuWppxPjtcG83ndhh/32A9xDMRFYkGOVzvpfSIk=" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="shapes.js"></script>
+		<script type="text/javascript" src="curve.js"></script>
+		<script type="text/javascript" src="utils.js"></script>
+		<script type="text/javascript" src="shape_editor.js"></script>
+	</head>
+
+	<style>
+		#gl-canvas {
+			box-shadow: rgba(0, 0, 0, 0.5) 2px 2px 4px;
+		}
+	</style>
+
+	<body>
+		<select id="shapes" onchange="shapeSelect()">
+			<option value="line">Line</option>
+			<option value="tri">Triangle</option>
+			<option value="square">Square</option>
+			<option value="rect">Rectangle</option>
+			<option value="cir">Circle</option>
+			<option value="elli">Ellipse</option>
+			<option value="curve">Curve</option>
+			<option value="polylin">Poly-line</option>
+			<option value="poly">Polygon</option>
+			<option value="pencil">Pencil</option>
+		</select>
+
+		&nbsp&nbsp&nbspPolygon Sides:<input type="number" id="pSide" value="5" min="3" max="100">
+		&nbsp&nbsp&nbspFill: <input type="checkbox" id="fill" value="false">
+		Fill Color: <input type="color" id="fillColor" value="#000000">
+		&nbsp&nbsp&nbspStroke Width:
+		
+		<select id="linWidth">
+			<option value="l1">1</option>
+			<option value="l2">2</option>
+			<option value="l3">3</option>
+			<option value="l4">4</option>
+			<option value="l5">5</option>
+		</select>
+		
+		&nbsp&nbspGrid:<input type="checkbox" id="grid" value="true" onchange="grid()">
+		<br><br>
+		<input type="button" id="clrscr" value="Clear All" onclick="erase()"> 
+		&nbsp&nbsp&nbsp <a id="img" download="Canvas.jpeg" href="" onclick="saveImage(this);">Save as Image</a>
+		&nbsp&nbsp&nbsp <a id="pdf" download="Canvas.pdf" href="" onclick="savePDF(this);">Save as PDF</a>
+		&nbsp&nbsp&nbsp <a id="json" download="Canvas.json" href="" onclick="saveJSON(this);">Save as JSON</a>
+		&nbsp&nbsp&nbsp <input type="file" id="jsonfile" accept=".json,.JSON"/>
+		<br><br>
+		<canvas id="gl-canvas" width="1024" height="850">
+			Oops ... your browser doesn't support the HTML5 canvas element
+		</canvas>
+	</body>
+</html>
